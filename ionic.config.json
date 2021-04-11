@@ -1,5 +1,7 @@
 {
   "name": "appWithCordova",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
