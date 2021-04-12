@@ -1,20 +1,22 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      HOME
-    </ion-title>
+    <ion-title>Productos</ion-title>
     
     <ion-buttons slot="start">
       <ion-button (click)="toggleMenu()">
         <ion-icon slot="icon-only" name="menu"></ion-icon>
       </ion-button>
     </ion-buttons>
-
+    
   </ion-toolbar>
 </ion-header>
 
- 
-<!-- <app-menu></app-menu> -->
-<ion-content [fullscreen]="true">
+<ion-content>
+  <ion-item>
+    <ion-icon (click) = "presentModal()" name="add-circle-outline" slot="start"></ion-icon>
+    <ion-label>
+      Añadir
+    </ion-label>
+  </ion-item>
 
 </ion-content>

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Añadir nuevo</ion-title>
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="products" (click)="cerrarModal()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Descripción</ion-label>
+    <ion-input ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating" type="number" >Precio</ion-label>
+    <ion-input ></ion-input>
+  </ion-item>
+  
+  <div class="boton">
+    <ion-button color="success" (click)="guardado()">Vende</ion-button>
+    <ion-button color="danger" (click)="mostarLista()">Muestra</ion-button>
+    <ion-button color="warning" (click)="ocultaLista()">Oculta</ion-button>
+
+  </div>
+  
+
+ <ion-list *ngIf="flat">
+  <ion-list-header>
+      Productos
+  </ion-list-header>
+  <ion-item *ngFor="let item of productos" (click)="venderProducto(item)">
+    <ion-avatar slot="start">
+      <ion-icon name="diamond-outline"></ion-icon>
+    </ion-avatar>
+    <ion-label >
+      <h2>{{ item.descripcion }}</h2>
+      <h3>Precio: {{item.precio }}</h3>
+    </ion-label>
+  </ion-item>
+
+ </ion-list>
+
+</ion-content>
