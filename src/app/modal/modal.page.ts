@@ -56,9 +56,9 @@ export class ModalPage implements OnInit {
 
   ngOnInit() {
     // this.productsService.createPouchDb()
-    this.productsService.db.info().then(function(info){
-      console.log(info)
-    })
+    // this.productsService.db.info().then(function(info){
+    //   console.log(info)
+    // })
     
   }
  
