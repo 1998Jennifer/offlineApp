@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { ProductsService } from '../products.service'
 
 
 
@@ -9,7 +10,8 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./modal.page.scss'],
 })
 export class ModalPage implements OnInit {
-  
+ 
+  public webada: [] = []
   flat: boolean = false;
   productos = [
 
@@ -50,9 +52,14 @@ export class ModalPage implements OnInit {
     }
   ]
 
-  constructor(private modalController: ModalController) { }
+  constructor(private modalController: ModalController, public productsService: ProductsService) { }
 
   ngOnInit() {
+    // this.productsService.createPouchDb()
+    this.productsService.db.info().then(function(info){
+      console.log(info)
+    })
+    
   }
  
 
