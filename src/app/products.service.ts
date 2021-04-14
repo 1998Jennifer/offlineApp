@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as PouchDB from 'pouchdb';
-// import cordovaSqlitePlugin from 'pouchdb-adapter-cordova-sqlite';
+import PouchDB from 'pouchdb';
 
 
 @Injectable({
@@ -13,9 +12,9 @@ export class ProductsService {
 
   constructor() {
     
-
+    
     this.db = new PouchDB('productos')
-    this.remote = 'http://127.0.0.1:5984/productos'
+    this.remote = new PouchDB('http://admin:1234@localhost:5984/productos')
 
     let options = {
       live: true,
@@ -23,37 +22,30 @@ export class ProductsService {
       continuous: true,
       auto_compaction:true
     }
-    this.db.sync(this.remote, options)
-
     
+    this.db.sync(this.remote, options).on('error', function(error){
+      console.error(error)
+
+    }) 
   }
 
-  getAll(){
+    getInfo(){
+     this.db.info().then(function (info){
+       console.log(info)
+     })
+    }
 
-  }
+    save(productos: unknown[]){
+      this.db.bulkDocs(productos)
+      console.log('ok')
+    }
 
-  //  getInfo(){
-  //    this.db.info().then(function (info){
-  //      console.log(info)
-  //    })
-  //  }
+    async getAllProducts(): Promise<[]>{
+      const products = await this.db.allDocs({include_docs: true})
+      // console.log(products)
+      return products.rows
+    }
 
-   
 
-  
-
-  //  saveActivity(data){
-  //   data.activityDateTime = moment().format()
-  //   data.activity ='Dashboard';
-  //   data._id = (moment().unix()).toString();
-  //   this.db.put(data).then((resp)=> {
-  //     console.log(resp)
-  //     return resp
-  //   })
-  //     .catch((e)=>{
-  //       console.log(e)
-  //       return e
-  //     })
-  // }
  
 }
