@@ -20,6 +20,7 @@ export class ModalPage implements OnInit {
 
   async ngOnInit() {
     // this.productos = await this.productsService.getAllProducts()
+    this.productsService.getInfo()
 
   }
  
