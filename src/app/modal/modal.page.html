@@ -19,7 +19,7 @@
   
   <div class="boton">
     <ion-button color="success" (click)="guardado()">Vende</ion-button>
-    <ion-button color="danger" (click)="mostarLista()">Muestra</ion-button>
+    <ion-button color="danger" (click)="mostarLista()" >Muestra</ion-button>
     <ion-button color="warning" (click)="ocultaLista()">Oculta</ion-button>
 
   </div>
@@ -29,7 +29,7 @@
   <ion-list-header>
       Productos
   </ion-list-header>
-  <ion-item *ngFor="let item of productos" (click)="venderProducto(item)">
+  <ion-item id="item-{{item.id}}"  *ngFor="let item of productos" (click)="venderProducto(item.id)">
     <ion-avatar slot="start">
       <ion-icon name="diamond-outline"></ion-icon>
     </ion-avatar>
