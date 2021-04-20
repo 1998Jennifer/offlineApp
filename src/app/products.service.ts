@@ -35,6 +35,20 @@ export class ProductsService {
      })
     }
 
+    async saveOne(one){
+      await this.db.put(one)
+    }
+
+    async deleteOne(one){
+      // await this.db.remove(one)
+      await this.db.put({...one, _deleted: true})
+    }
+
+    async updateOne(one){
+      await this.db.put(one)
+
+    }
+
     save(productos: unknown[]){
       this.db.bulkDocs(productos)
       console.log('ok')
@@ -42,10 +56,8 @@ export class ProductsService {
 
     async getAllProducts(): Promise<[]>{
       const products = await this.db.allDocs({include_docs: true})
-      // console.log(products)
+      console.log(products)
       return products.rows
     }
-
-
  
 }

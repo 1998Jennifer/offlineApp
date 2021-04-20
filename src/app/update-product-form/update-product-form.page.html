@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Modificar</ion-title>
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="products" (click)="cerrarModal()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form >
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input name="descripcion" [(ngModel)]="item.descripcion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input  name="precio" [(ngModel)]="item.precio"></ion-input>
+    </ion-item>
+    <div class="boton"><ion-button (click)="modificar()" color="warning" type="submit" expand="block" fill="outline">Guarda</ion-button></div>
+    
+  </form>
+
+</ion-content>

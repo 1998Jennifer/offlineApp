@@ -8,20 +8,22 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-label position="floating">Descripción</ion-label>
-    <ion-input ></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating" type="number" >Precio</ion-label>
-    <ion-input ></ion-input>
-  </ion-item>
-  
+  <form [formGroup]="productosForm" (ngSubmit)="add(productosForm.value)">
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input formControlName="descripcion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" type="number" >Precio</ion-label>
+      <ion-input formControlName="precio"></ion-input>
+    </ion-item>
+    <div class="boton"><ion-button color="success" type="submit" expand="block" fill="outline">ADD</ion-button></div>
+    
+  </form>
+
   <div class="boton">
-    <ion-button color="success" (click)="guardado()">Vende</ion-button>
     <ion-button color="danger" (click)="mostarLista()">Muestra</ion-button>
     <ion-button color="warning" (click)="ocultaLista()">Oculta</ion-button>
-
   </div>
   
 
@@ -29,7 +31,7 @@
   <ion-list-header>
       Productos
   </ion-list-header>
-  <ion-item *ngFor="let item of productos" (click)="venderProducto(item)">
+  <ion-item *ngFor="let item of productos; let index = index" (click)="venderProducto(item)">
     <ion-avatar slot="start">
       <ion-icon name="diamond-outline"></ion-icon>
     </ion-avatar>
@@ -37,6 +39,8 @@
       <h2>{{ item.doc.descripcion }}</h2>
       <h3>Precio: {{item.doc.precio }}</h3>
     </ion-label>
+    <ion-icon name="trash-outline" slot="end" (click)="deleteOne(item.doc, index)"></ion-icon>
+    <ion-icon name="pencil-outline" (click)="updateOne(item.doc)"></ion-icon>
   </ion-item>
 
  </ion-list>

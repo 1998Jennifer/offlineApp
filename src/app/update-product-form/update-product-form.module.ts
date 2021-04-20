@@ -4,19 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ModalPageRoutingModule } from './modal-routing.module';
+import { UpdateProductFormPageRoutingModule } from './update-product-form-routing.module';
 
-import { ModalPage } from './modal.page';
-
+import { UpdateProductFormPage } from './update-product-form.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
     ReactiveFormsModule,
-    ModalPageRoutingModule
+    IonicModule,
+    UpdateProductFormPageRoutingModule
   ],
-  declarations: [ModalPage]
+  declarations: [UpdateProductFormPage]
 })
-export class ModalPageModule {}
+export class UpdateProductFormPageModule {}
